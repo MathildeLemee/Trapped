@@ -21,18 +21,24 @@ server.listen(PORT, HOST);
 var socket = io.listen(server);
 var player = [];
 var rooms = {};
-var currentRoom = Math.floor(Math.random() * 50000) + 1;
-rooms[currentRoom] = [];
+var NUMBER_CLIENT_PER_ROOM=2;
+//init first room
+var currentRoom = initRoom();
+
+function initRoom(){
+var id = Math.floor(Math.random() * 50000) + 1;
+rooms[id] = [];
+return id;
+}
 var direction = ['up', 'down', 'left', 'right'];
 var color = ['yellow', 'green', 'blue', 'red'];
 
 function registerClient(client) {
     rooms[currentRoom].push(client);
-    if (rooms[currentRoom].length == 4) {
+    if (rooms[currentRoom].length == NUMBER_CLIENT_PER_ROOM) {
         launchGame(currentRoom);
-        currentRoom = Math.floor(Math.random() * 50000) + 1;
-        rooms[currentRoom] = [];
-    }
+        currentRoom = initRoom();
+    }   
 }
 
 function launchGame(room) {
@@ -47,14 +53,10 @@ function launchGame(room) {
     });
 }
 socket.on('connection', function(client) {
-/* Chaque nouvelle connexion, un object client est créé
-* Il va falloir penser au suivi de session (regarder du coté d'express)
-*/
     console.log("Connection");
     registerClient(client);
-    //Actions à l'ouverture d'une connexion
+    //each begin request => pseudo boradcat to all player in the room - not optimized but works.
     client.on('message', function(data) {
-        //client.send("Bonjour "+ data.x);
         console.log({
             "x": data.x,
             "y": data.y,
@@ -71,7 +73,7 @@ socket.on('connection', function(client) {
         });
     });
     client.on('disconnect', function() {
-        //Actions à la fermeture d'une connexion
+        //TODO Should removed the player from the room
         console.log("DeConnection");
     });
 });
