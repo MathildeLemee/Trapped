@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>CatchMe ... if you can !</title>
+    <link href='style.css' rel='stylesheet'>
+    <script src='play.js' type='text/javascript'></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+  <body onLoad="javascript:init();">
+  <h1>CatchMe</h1>CatchMe est un jeu multi-joueur basé sur node.js et socket.io . Les règles sont simples :
+  - Il ne faut pas toucher le mur.
+  - Il ne faut pas toucher les autres joueurs.
+  
+  Il vous faudra etre le dernier en vie pour gagner la partie !
+  
+  <div id="score"/>
+    <canvas id="canvas" width="400" height="300"></canvas>
+  </body>
+</html>
