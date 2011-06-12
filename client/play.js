@@ -30,7 +30,8 @@ game.on('move', function (data) {
 });
 
 game.on('message', function (data) {
-        alert(data);
+   console.log(data);
+   $('#message').append(data);
 });
 
 
@@ -61,7 +62,7 @@ function moveTo(x, y, w, h) {
         gameOver();
     }
     positions.push([currentPosition['x'], currentPosition['y']]);
-    game.send( "move",{"x": x, "y": y,"color":color,"room":room});
+    game.move({"x": x, "y": y,"color":color,"room":room});
     createSquare(x, y, w, h,color);
 }
 
@@ -102,7 +103,7 @@ function moveRight(){
 function gameOver(){
     clearInterval(interval);
     allowMove = false;
-    game.send( "loose",{"room":room});
+    game.loose({"room":room});
     alert("Game Over.");
     
   }
