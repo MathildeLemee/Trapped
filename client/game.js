@@ -75,10 +75,7 @@ SocketIOGame.prototype.on = function(event, closure){
 SocketIOGame.prototype._send = function(event, msg){
     console.log("sending message: ", event, msg);
     msg = msg || {};
-
     msg['event'] = event;
-
-    console.log("for realz",msg);
     this.socket.send(JSON.stringify(msg));
 };
 

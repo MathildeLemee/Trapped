@@ -12,6 +12,7 @@ var canvas = document.getElementById("canvas");
    this.gridSize = 5;
    this.currentPosition = {'x':this.x, 'y':this.y};
    }  
+   canvas.strokeStyle = "red";
    allowMove = true;
    this.positions=[];
 }
@@ -30,10 +31,13 @@ game.on('move', function (data) {
 });
 
 game.on('message', function (data) {
-   console.log(data);
-   $('#message').append(data);
+   message(data);
 });
 
+function message(data){
+   $('#message').append(data);
+    
+}
 
 
 function draw() {
@@ -104,7 +108,7 @@ function gameOver(){
     clearInterval(interval);
     allowMove = false;
     game.loose({"room":room});
-    alert("Game Over.");
+    message("Game Over.");
     
   }
 function executeMove(dirValue, axisType, axisValue) {

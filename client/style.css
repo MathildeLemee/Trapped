@@ -1,34 +1,523 @@
-html, body div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kdb, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  border: 0;
-  outline: 0;
-  background: transparent; 
+/* 
+FreshServe - CSS Stylesheet
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+*/
+* {
+    padding: 0;
+	margin: 0;
 }
 
-ol, ul {
-  list-style: none; 
+#canvas {
+border-style:solid;
+border-width:2px;
+border-color:red;
+margin-left:5px;
+}
+/*--------------------------------------------
+Team
+---------------------------------------------*/
+
+div.team-member {
+    border:1px dotted;
+    height:160px;
+    margin-bottom:10px;
+    margin-top:20px;
+    padding-right:10px;
+    padding-top:10px;
 }
 
-blockquote, q {
-  quotes: none; 
+    div.team-member label {
+        margin-top: 5px;
+        margin-left:20px;
+    }
+
+    div.team-member img.avatar {
+        float:right;
+        position:relative;
+        right:5px;
+        top:5px;
+        height:80px;
+        width:80px;
+    }
+
+     div.team-member img.delete {
+        position:relative;
+        right: -20px;
+        top: -20px;
+     }
+
+    a#team-new {
+        float: left;
+    }
+
+    div.team-member a, div.team-member span, #team-new {
+        float:right;
+        margin-left:2px;
+        margin-right:2px;
+    }
+
+      div.team-member input {
+              margin-left:20px;
+      }
+         div.team-member input.description {
+            width:400px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+         div.team-member input.aliases {
+            width:540px;
+        }
+
+
+/*--------------------------------------------
+Wall Config
+---------------------------------------------*/
+div#buildwall-create form span.error, div#buildwall-update form span.error {
+    bottom:0;
+    color:#DD3030;
+    display:inline;
+    float:right;
+    font-size:9px;
+    margin-bottom:0;
+    margin-left:20px;
+    padding-right:0;
+    padding-top:0;
+    position:relative;
+    top:5px;
+    white-space:nowrap;
+    width:100px;
 }
 
-a, a:hover {
-  text-decoration: none; 
+/*--------------------------------------------
+Legals
+---------------------------------------------*/
+div#legals ul {
+	margin-left:50px;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: none; 
+div#legals p {
+	margin-left:20px;
+	margin-right:30px;
 }
 
+/*--------------------------------------------
+Pricing Component
+---------------------------------------------*/
+.free-price {
+	color:#008000;
+	font-weight:bold;
+}
+.coming-soon{
+	color:red;
+}
+/*--------------------------------------------
+Wall Component
+---------------------------------------------*/
+div#page_content div#buildList {
+	border:1px dotted black;
+	padding:5px;
+}
+
+div#wall-no-data {
+	color:white;
+}
+
+p#url-message {
+    text-align:center;
+}
+
+div#buildList {
+	background:none repeat scroll 0 0 black;
+	height:350px;
+	margin-left:100px;
+	width:400px;
+	color:black;
+	text-align:center;
+	font-weight:bold;
+	white-space: nowrap;
+    cursor:  pointer;
+    display:none;
+}
+
+#buildwall-delete-all-button, #buildwall-reset {
+	left:290px;
+	top:20px;
+	position:relative;
+}
+
+#buildList img {
+	margin:5px;
+	position:relative;
+}
+
+.build-status-FAILED {
+	background-color: red;
+	position:relative;
+	color : white;
+}
+
+.build-status-SUCCESS {
+	background-color: #008000;
+	position:relative;
+	color : white;
+}
+
+.build-status-BUILDING {
+	background-color: yellow;
+	position:relative;
+}
+
+.build-title, .build-subtitle {
+    white-space: normal;
+}
+
+/*--------------------------------------------
+Login Component
+---------------------------------------------*/
+
+#login-component {
+	background:url("http://www.buildwall.com/public/images/pulldown-bg-2.png") no-repeat scroll 0 100% transparent;
+	margin:0 0 0 640px;
+	padding-bottom:11px;
+	position:absolute;
+	z-index:9999;
+	display:none;
+	left:0px;
+}
+	.login {
+		background:url("http://www.buildwall.com/public/images/pulldown-bg-1.png") repeat scroll 0 0 transparent;
+		padding:5px 15px;
+		width:280px;
+	}
+	
+	.login-inner {
+		background:none repeat scroll 0 0 #FFFFFF;
+		padding:20px;
+	}
+	
+		#login-error {
+			color:red;
+			border-bottom-width:2px;
+			margin-bottom:5px;
+			margin-top:-19px;
+		}
+		
+		#label-remember {
+			font-size:12px;
+			margin-left:15px;
+			width:130px;
+		}
+		
+		#label-password {
+			font-size:13px;
+			margin-left:15px;
+			padding-left:0;
+			width:230px;
+		}
+		
+			#label-password input {
+				margin-left:10px;
+			}
+			
+		#label-user {
+			font-size:13px;
+			margin-left:15px;
+			padding-left:0;
+			width:230px;
+		}
+		
+			#label-user input {
+				margin-left:40px;
+			}
+			
+		#div-button-login {
+			height:16px;
+			margin-bottom:-10px;
+			margin-left:20px;
+			margin-top:15px;
+		}
+			#login-button {
+				margin-left:130px;
+				margin-top:0;
+				opacity:1;
+				top:-20px;
+			}
+			
+			#cancel-button {
+				margin-left:20px;
+				margin-right:20px;
+			}
+
+#header-welcome, #header-login {
+	color:#B3B3B3;
+	float:right;
+	overflow:hidden;
+	margin-left:3px;
+	margin-right:11px;
+	padding-left:2px;
+	margin-top:0;
+	padding-top:10px;
+	font-size:0.85em;
+}
+
+
+
+/*--------------------------------------------
+Global Elements
+---------------------------------------------*/
 body {
-  background: #ddd; 
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	color: #707070;
+	background: #ebebeb;
 }
 
-canvas {
-  border: solid 1px red; 
+div.page {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+}
+
+div#header {
+	background: url('http://www.buildwall.com/public/images/header_bg.gif') repeat-x top;
+	height: 150px;
+}
+
+div#header a.logo {
+	float: left;
+	background: no-repeat top;
+	width: 264px;
+	height: 80px;git 
+}
+
+div#header ul {
+	list-style: none;
+	float: right;
+	margin-top: 20px;
+}
+
+div#header ul li {
+	height: 60px;
+	float: left;
+	margin-left: 0px;
+	padding: 0px 0px 0px 16px;
+}
+
+div#header ul li a {
+	color: #555555;
+	font-size: 13px;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	padding: 4px 10px 4px 10px;
+}
+
+div#header ul li a:hover {
+	color: #333;
+}
+
+div#header li.active a {
+	background: #dddddd;
+	color: #000;
+}
+
+div#page {
+	width: 980px;
+	margin: 0 auto;
+	margin-top: -51px;
+}
+
+div#page .header {
+	background: white repeat-x top;
+	height: 60px;
+}
+
+div#page .header h1 {
+	padding-left: 30px;
+	padding-top: 5px;
+}
+
+div#page .header ul {
+	list-style: none;
+	float: right;
+	margin-top: -30px;
+	margin-right: 10px;
+}
+
+div#page .header ul li {
+	float: left;
+	margin-right: 20px;
+	height: 30px;
+	display: block;
+}
+
+div#page .header ul li.active {
+	background: url('http://www.buildwall.com/public/images/sub_menu-left.png') no-repeat top left;
+}
+
+div#page .header ul li a {
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #8b8c8b;
+	display: block;
+	padding: 6px 20px 0px 20px;
+	height: 30px;
+}
+
+div#page .header ul li.active a {
+	color: #464646;
+	background: url('http://www.buildwall.com/public/images/sub_menu-right.png') no-repeat top right;
+}
+
+div#page .header ul li a:hover {
+	color: #555;
+}
+
+div#page .header_home {
+	background: url('http://www.buildwall.com/public/images/home_header.gif') repeat-x bottom;
+	height: 320px;
+	position: relative;
+}
+
+div#page .header .price_tag {
+	width: 130px;
+	height: 130px;
+	position: absolute;
+	top: -55px;
+	right: -35px;
+}
+
+div#page .header_home img.main_screenshot {
+	float: left;
+	padding: 20px 0px 0px 35px;
+	width: 360px;
+	height: 280px;
+}
+
+div#page .header_home .info {
+	width: 450px;
+	float: right;
+	margin: 25px 50px 0px 0px;
+}
+
+div#page .header_home .info h1 {
+	padding: 0;
+	margin-bottom: 15px;
+	font-size: 30px;
+	color: #363636;
+}
+
+div#page .header_home .info p {
+	font-size: 13px;
+	color: #363636;
+	margin-bottom: 30px;
+}
+
+div#page .header_home .info .trial {
+	font-size: 11px;
+	color: #7d7d7d;
+	margin-left: 12px;
+}
+
+div#page .top {
+	background: url('http://www.buildwall.com/public/images/page_top.gif') no-repeat top;
+	height: 23px;
+}
+
+div#page .content {
+	background: url('http://www.buildwall.com/public/images/page_middle.gif') repeat-y top;
+}
+
+div#page .content .padding {
+	padding: 25px 45px 25px 45px;
+}
+
+div#page .left {
+	width: 600px;
+	float: left;
+}
+
+div#page .right {
+	width: 245px;
+	float: right;
+}
+
+div#page .bottom {
+	background: url('http://www.buildwall.com/public/images/page_bottom.gif') no-repeat bottom;
+	height: 23px;
+}
+
+div#page .section_title {
+	width: 240px;
+	height: 56px;
+	margin-left: -46px;
+	margin-bottom: 10px;
+	margin-top: 30px;
+}
+
+div#page .section_title h3 {
+	font-size: 15px;
+	color: #fff;
+	padding: 5px 0px 0px 45px;
+}
+
+div#footer {
+	margin-top: 5px;
+	padding-bottom: 30px;
+}
+
+div#footer p {
+	float: left;
+	color: #888;
+}
+
+div#footer ul {
+	list-style: none;
+	float: right;
+}
+
+div#footer ul li {
+	float: left;
+}
+
+div#footer ul li a {
+	margin-left: 20px;
+	color: #707070;
+	text-decoration: none;
+}
+
+div#footer ul li a:hover {
+	color: #333;
+}
+
+/*-----------------------------------------
+/*--------------------------------------------
+Utility
+---------------------------------------------*/
+.clear {
+	clear: both;
+}
+
+img {
+	border: none;
+}
+
+a {
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+hr {
+	border: none;
+	background: #ccc;
+	color: #ccc;
+	width: 100%;
+	height: 1px;
+	margin: 20px 0px 20px 0px;
 }

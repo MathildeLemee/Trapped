@@ -63,7 +63,6 @@ console.log({
         });
         rooms[data.room].forEach(function(c, index) {
              if (c.sessionId != client.sessionId) {
-              
               game.infoMove(c,data);
             }
         });
@@ -72,7 +71,7 @@ console.log({
 game.on("loose",function(client,data){
 rooms[data.room].forEach(function(c, index) {
             if (c.sessionId != client.sessionId) {
-               game.infoMessage(c,client.sessionId+" loose.");
+               game.infoMessage(c,"Congratulations, you win the game !!! ");
             }
         });
 });
