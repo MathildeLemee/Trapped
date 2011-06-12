@@ -1,10 +1,9 @@
 //Mon host chez cloud9
 var HOST = "nodesnake.mathilde.c9.io";
 
+var game = new SocketIOGame(HOST);
+
 function init() {
-io.setPath('/path/to/socket.io/');
-this.socket = new io.Socket(HOST);
-socket.connect();
 var canvas = document.getElementById("canvas");  
  if (canvas.getContext) {
    ctx = canvas.getContext("2d");
@@ -15,21 +14,26 @@ var canvas = document.getElementById("canvas");
    }  
    allowMove = true;
    this.positions=[];
+}
 
-socket.on('message', function (data) {
-   if (data.direction!=null) {
+game.on('init', function (data) {
         direction=data.direction;
         color = data.color;
         room = data.room;
         draw();
-    }
-     if (data.x!=null) {
-        positions.push([data.x,data.y]);
-        createSquare(data.x,data.y,gridSize, gridSize,data.color);
-    }
 });
 
-}
+game.on('move', function (data) {
+        console.log(data);
+        positions.push([data.x,data.y]);
+        createSquare(data.x,data.y,gridSize, gridSize,data.color);
+});
+
+game.on('message', function (data) {
+        alert(data);
+});
+
+
 
 function draw() {
    interval = setInterval(autoMove,100);
@@ -46,7 +50,6 @@ function createSquare(x, y, w, h,c) {
     ctx.fillStyle =c;
     ctx.fillRect (x, y, w, h);
   }
-
 }  
 function hasCollision(element, index, array) {
   return (element[0] == currentPosition['x'] && element[1] == currentPosition['y']);  
@@ -58,7 +61,7 @@ function moveTo(x, y, w, h) {
         gameOver();
     }
     positions.push([currentPosition['x'], currentPosition['y']]);
-    socket.send( {"x": x, "y": y,"color":color,"room":room});
+    game.send( "move",{"x": x, "y": y,"color":color,"room":room});
     createSquare(x, y, w, h,color);
 }
 
@@ -97,8 +100,9 @@ function moveRight(){
 }
 
 function gameOver(){
-      clearInterval(interval);
+    clearInterval(interval);
     allowMove = false;
+    game.send( "loose",{"room":room});
     alert("Game Over.");
     
   }
