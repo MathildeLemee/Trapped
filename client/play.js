@@ -1,7 +1,7 @@
 //Mon host chez cloud9
 //var HOST = "nodesnake.mathilde.c9.io";
 
-var game = new SocketIOGame();
+var game = new SocketIOGame("http://trappzzzz.herokuapp.com/");
 
 function init() {
 var canvas = document.getElementById("canvas");  

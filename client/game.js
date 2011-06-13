@@ -3,16 +3,17 @@ var SocketIOGame= function(host){
   this.eventHandlers = [];
 
 
-  this.socket = new io.Socket(host || '*');
+  this.socket = new io.Socket(8001,host || '*');
 
 
   this.socket.connect();
-
+console.log("connection begin");
 
     var context = this;
 
     this.socket.on('connect', function(){
     context.connected = true;
+    console.log("connection start");
 
     context._emit('connect',{});
 

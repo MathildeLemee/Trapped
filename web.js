@@ -15,6 +15,7 @@ var server = http.createServer(function(req, res) {
     res.end("Allo oui j'ecoute ?\n");
 });
 server.listen(Number(process.env.PORT || PORT), HOST);
+console.log("port :"+process.env.PORT || PORT+" host"+HOST);
 var socket = io.listen(server),
     game = games.listen(socket, {});
 
