@@ -1,13 +1,13 @@
-var SocketIOGame= function(host){
+var SocketIOGame= function(host,port){
   this.connected = false;
   this.eventHandlers = [];
 
 
-  this.socket = new io.Socket(8001,host || '*');
+  this.socket = new io.Socket('trappzzzz.herokuapp.com', {'port': port,'origin': '*:*'});
 
 
   this.socket.connect();
-console.log("connection begin");
+console.log("connection begin "+host+""+port);
 
     var context = this;
 
