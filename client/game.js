@@ -3,7 +3,7 @@ var SocketIOGame= function(host){
   this.eventHandlers = [];
 
 
-  this.socket = new io.Socket(host || 'localhost');
+  this.socket = new io.Socket(host || '*');
 
 
   this.socket.connect();
