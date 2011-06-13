@@ -1,5 +1,5 @@
-var PORT = process.env.C9_PORT;
-var HOST = "0.0.0.0";
+var PORT = 8001;
+var HOST = null;
 
 
 var sys = require("sys"),
@@ -14,7 +14,7 @@ var server = http.createServer(function(req, res) {
     });
     res.end("Allo oui j'ecoute ?\n");
 });
-server.listen(PORT, HOST);
+server.listen(Number(process.env.PORT || PORT), HOST);
 var socket = io.listen(server),
     game = games.listen(socket, {});
 
